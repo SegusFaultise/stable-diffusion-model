@@ -98,7 +98,7 @@ def images():
         ckpt = torch.load(r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Saved_Model\ckpt.pt")
         model.load_state_dict(ckpt)
         diffusion = Diffusion(img_size=64, device=device)
-        x = diffusion.sample(model, 10)
+        x = diffusion.sample(model, 8)
         saveImages(x, os.path.join("Api_Images", F"img.jpg"))
         file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
         return send_file(file_name, mimetype="image/jpg")
