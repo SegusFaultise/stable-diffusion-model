@@ -1,33 +1,25 @@
 #region Imports
-import copy
-from http.client import NETWORK_AUTHENTICATION_REQUIRED
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 import torch
 import os
 from utils import *
 from SDModules import UNet
 import logging
 from tqdm import tqdm
-import torchvision
 from rich import print
-from sklearn.datasets import make_circles
-from torch import nn
-from torch.utils.tensorboard import SummaryWriter
-import torch.nn.functional as F
 from SDUtils import getData, plotImages, setupLogging, saveImages
 import flask
 from flask import send_file
 #endregion
 
+#region Setting Up Flask Var {app}
 app = flask.Flask(__name__)
+#endregion
 
 #region Logging
 logging.basicConfig(format="%(asctime)s - %(levelname)s: %(message)s", level=logging.INFO, datefmt="%I:%M:%S")
 #endregion
 
-#region Diffusion
+#region Diffusion Model
 class Diffusion:
     def __init__(self, noise_steps=1000, beta_start=1e-4, beta_end=0.02, img_size=256, device="cuda"):
         self.noise_steps = noise_steps
@@ -90,6 +82,7 @@ def Launch():
     args.lr = 3e-4
 #endregion
 
+#region Get Request & Hosting Api
 @app.route("/images", methods=["GET"])
 def images():
         Launch()
@@ -98,7 +91,7 @@ def images():
         ckpt = torch.load(r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Saved_Model\ckpt.pt")
         model.load_state_dict(ckpt)
         diffusion = Diffusion(img_size=64, device=device)
-        x = diffusion.sample(model, 8)
+        x = diffusion.sample(model, 10)
         saveImages(x, os.path.join("Api_Images", F"img.jpg"))
         file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
         return send_file(file_name, mimetype="image/jpg")
@@ -107,3 +100,4 @@ if __name__ == "__main__":
         HOST = "127.0.0.1"
         PORT = 4000
         app.run(HOST, PORT)
+#endregion
