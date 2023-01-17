@@ -96,8 +96,8 @@ def images():
         file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
         return send_file(file_name, mimetype="image/jpg")
 
-if __name__ == "__main__":
-        HOST = "127.0.0.1"
-        PORT = 4000
-        app.run(HOST, PORT)
+# if __name__ == "__main__":
+#         HOST = "127.0.0.1"
+#         PORT = 4000
+#         app.run(HOST, PORT)
 #endregion
