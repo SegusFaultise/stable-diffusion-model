@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/d0aca04f-d462-4d70-9f46-ab839ee0e241/AppServices/subscriptions/d0aca04f-d462-4d70-9f46-ab839ee0e241/resourceGroups/STABLEDIFFUSIONAPI/providers/Microsoft.Web/sites/StableDiffusionApiZakk",
+    "appService.deploySubpath": "."
+}
