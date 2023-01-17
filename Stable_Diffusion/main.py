@@ -97,7 +97,6 @@ def images():
         return send_file(file_name, mimetype="image/jpg")
 
 if __name__ == "__main__":
-        HOST = "127.0.0.1"
-        PORT = 4000
-        app.run(HOST, PORT)
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
 #endregion
