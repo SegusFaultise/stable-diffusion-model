@@ -96,7 +96,5 @@ def images():
         file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
         return send_file(file_name, mimetype="image/jpg")
 
-if __name__ == "__main__":
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
+app.run()
 #endregion
