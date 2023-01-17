@@ -3,6 +3,4 @@ pillow
 pyyaml
 tqdm
 torch
-os
-logging
 flask
