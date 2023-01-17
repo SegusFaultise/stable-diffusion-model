@@ -5,7 +5,6 @@ from utils import *
 from SDModules import UNet
 import logging
 from tqdm import tqdm
-from rich import print
 from SDUtils import getData, plotImages, setupLogging, saveImages
 import flask
 from flask import send_file
@@ -96,5 +95,6 @@ def images():
         file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
         return send_file(file_name, mimetype="image/jpg")
 
-app.run(host="0.0.0.0")
+if __name__ == "__main__":
+    app.run(ssl_context='adhoc')
 #endregion
