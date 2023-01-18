@@ -21,7 +21,6 @@ def init():
     model = joblib.load(model_path)
     logging.info("Init complete")
 
-
 def run(raw_data):
     """
     This function is called for every invocation of the endpoint to perform the actual scoring/prediction.
