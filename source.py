@@ -4,7 +4,6 @@ import json
 import numpy
 import joblib
 
-
 def init():
     """
     This function is called when the container is initialized/started, typically after create/update of the deployment.
