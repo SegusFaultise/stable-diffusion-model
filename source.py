@@ -2,7 +2,7 @@ import os
 import logging
 import json
 import numpy
-import joblib
+
 
 def init():
     """
@@ -16,6 +16,7 @@ def init():
     model_path = os.path.join(
         os.getenv("AZUREML_MODEL_DIR"), "Saved_Model\ckpt.pt"
     )
+    import joblib
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
     logging.info("Init complete")
