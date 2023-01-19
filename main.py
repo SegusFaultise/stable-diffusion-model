@@ -94,4 +94,6 @@ def images():
         saveImages(x, os.path.join("Api_Images", F"img.jpg"))
         file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
         return send_file(file_name, mimetype="image/jpg")
+
+app.run(ssl_context=("cert.pem", "key.pem"), host="0.0.0.0", port=50100, )
 #endregion
