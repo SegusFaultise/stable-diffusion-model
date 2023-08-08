@@ -1,7 +1,7 @@
 #region Imports
 import torch
 import os
-from utils import *
+#from utils import *
 from SDModules import UNet
 import logging
 from tqdm import tqdm
@@ -81,19 +81,19 @@ def Launch():
     args.lr = 3e-4
 #endregion
 
-#region Get Request & Hosting Api
-@app.route("/images", methods=["GET"])
-def images():
-        Launch()
-        device = "cuda"
-        model = UNet().to(device)
-        ckpt = torch.load(r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Saved_Model\ckpt.pt")
-        model.load_state_dict(ckpt)
-        diffusion = Diffusion(img_size=64, device=device)
-        x = diffusion.sample(model, 10)
-        saveImages(x, os.path.join("Api_Images", F"img.jpg"))
-        file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
-        return send_file(file_name, mimetype="image/jpg")
+# #region Get Request & Hosting Api
+# @app.route("/images", methods=["GET"])
+# def images():
+        # Launch()
+        # device = "cuda"
+        # model = UNet().to(device)
+        # ckpt = torch.load(r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Saved_Model\ckpt.pt")
+        # model.load_state_dict(ckpt)
+        # diffusion = Diffusion(img_size=64, device=device)
+        # x = diffusion.sample(model, 10)
+        # saveImages(x, os.path.join("Api_Images", F"img.jpg"))
+        # file_name = r"C:\Users\wilso\Downloads\Personal_Code_Projects\STABLE_DIFFUSION_API\Api_Images\img.jpg"
+        # return send_file(file_name, mimetype="image/jpg")
 
-app.run(ssl_context=("cert.pem", "key.pem"), host="0.0.0.0", port=50100, )
-#endregion
+# app.run(ssl_context=("cert.pem", "key.pem"), host="0.0.0.0", port=50100, )
+# #endregion
